@@ -3,7 +3,7 @@ include "db_conn.php";
 
 if(isset($_POST['submit'])){
     $NIC = $_POST['NIC'];
-    $phonenumber = $_POST['phonenumber'];
+    $Password = $_POST['Password'];
 
     $sql = "INSERT INTO `users`(`NIC`, `FirstName`, `LastName`, `phonenumber`) 
     VALUES ('$NIC','$FirstName','$LastName','$phonenumber')";
@@ -38,12 +38,12 @@ if(isset($_POST['submit'])){
     </head>
     <body>
         <nav class= "navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #00ff5573;">  
-            registration
+            Login
         </nav>
 
         <div class="container">
             <div class ="text-center mb-4">
-                <h3>Register here</h3>
+                <h3>Login here</h3>
                 <p class="text-muted"> Complete the form</p>
             </div>
 
@@ -56,23 +56,13 @@ if(isset($_POST['submit'])){
                         </div>
 
                         <div class="col mb-3">
-                            <label class="form-label">First Name: </label>
-                            <input type="text" class="form-control" name="FirstName" placeholder="provide first name" required/>
-                        </div>
-
-                        <div class="col mb-3">
-                            <label class="form-label">Last Name: </label>
-                            <input type="text" class="form-control" name="LastName" placeholder="provide last name" required/>
-                        </div>
-
-                        <div class="col mb-3">
-                            <label class="form-label">Phone  Number: </label>
-                            <input type="text" class="form-control" name="phonenumber" placeholder="provie phone number" required/>
+                            <label class="form-label">Password: </label>
+                            <input type="password" class="form-control" name="Password" placeholder="provide password" required/>
                         </div>
 
                         <div>
                             <button type="submit" class="btn btn-success" name="submit">Submit</button>
-                            <a href="login.php" class="btn btn-danger">Login</a>
+                            <a href="register.php" class="btn btn-danger">Register</a>
 
                         </div>
 
