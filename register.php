@@ -54,22 +54,22 @@ if(isset($_POST['submit'])){
                     
                         <div class="col mb-3" >
                             <label class="form-label">NIC: </label>
-                            <input type="text" class="form-control" name="NIC" placeholder="provide nic number"/>
+                            <input type="text" class="form-control" name="NIC" placeholder="provide nic number" required/>
                         </div>
 
                         <div class="col mb-3">
                             <label class="form-label">First Name: </label>
-                            <input type="text" class="form-control" name="FirstName" placeholder="provide first name"/>
+                            <input type="text" class="form-control" name="FirstName" placeholder="provide first name" required/>
                         </div>
 
                         <div class="col mb-3">
                             <label class="form-label">Last Name: </label>
-                            <input type="text" class="form-control" name="LastName" placeholder="provide last name"/>
+                            <input type="text" class="form-control" name="LastName" placeholder="provide last name" required/>
                         </div>
 
                         <div class="col mb-3">
                             <label class="form-label">Phone  Number: </label>
-                            <input type="text" class="form-control" name="phonenumber" placeholder="provie phone number"/>
+                            <input type="text" class="form-control" name="phonenumber" placeholder="provie phone number" required/>
                         </div>
 
                         <div>

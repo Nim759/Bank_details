@@ -64,22 +64,22 @@ if(isset($_POST['submit'])){
                     
                         <div class="col mb-3" >
                             <label class="form-label">Bank Name: </label>
-                            <input type="text" class="form-control" name="BankName" value="<?php echo  $row['BankName']?>">
+                            <input type="text" class="form-control" name="BankName" required value="<?php echo  $row['BankName']?>">
                         </div>
 
                         <div class="col mb-3">
                             <label class="form-label">Branch: </label>
-                            <input type="text" class="form-control" name="Branch" value="<?php echo  $row['Branch']?>">
+                            <input type="text" class="form-control" name="Branch" required value="<?php echo  $row['Branch']?>">
                         </div>
 
                         <div class="col mb-3">
                             <label class="form-label">Branch Code: </label>
-                            <input type="text" class="form-control" name="BranchCode" value="<?php echo  $row['BranchCode']?>">
+                            <input type="text" class="form-control" name="BranchCode" required value="<?php echo  $row['BranchCode']?>">
                         </div>
 
                         <div class="col mb-3">
                             <label class="form-label">Account Number: </label>
-                            <input type="text" class="form-control" name="AccountNumber" value="<?php echo  $row['AccountNumber']?>">
+                            <input type="text" class="form-control" name="AccountNumber"required value="<?php echo  $row['AccountNumber']?>">
                         </div>
 
                         <div>
