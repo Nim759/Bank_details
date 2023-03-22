@@ -8,7 +8,7 @@ if(isset($_POST['submit'])){
     $BranchCode = $_POST['BranchCode'];
     $AccountNumber = $_POST['AccountNumber'];
 
-    $sql = "UPDATE `bank_details` SET `BankName`='$BankName',`Branch`='$Branch',`BranchCode`='$BranchCode',`AccountNumber`='$AccountNumber' WHERE `AccountNumber` ='$AccountNumber'";
+    $sql = "UPDATE bank_details SET BankName='$BankName',Branch='$Branch',BranchCode='$BranchCode',AccountNumber='$AccountNumber' WHERE AccountNumber='$AccountNumber'";
     
     $result = mysqli_query($conn, $sql);
     // echo ($result)
@@ -50,7 +50,7 @@ if(isset($_POST['submit'])){
             </div>
 
             <?php
-            $sql = "SELECT * FROM `bank_details` WHERE AccountNumber = $AccountNumber LIMIT 1";
+            $sql = "SELECT * FROM bank_details WHERE AccountNumber = '$AccountNumber' LIMIT 1";
             $result = mysqli_query($conn, $sql);
             if($result === false){
                 echo "Failed: " . mysqli_error($conn);

@@ -1,7 +1,7 @@
 <?php
 include "db_conn.php";
 $AccountNumber = $_GET['AccountNumber'];
-$sql = "DELETE FROM `bank_details` WHERE AccountNumber =$AccountNumber";
+$sql = "DELETE FROM `bank_details` WHERE AccountNumber ='$AccountNumber'";
 $result = mysqli_query($conn , $sql);
 
 if($result){
