@@ -8,22 +8,22 @@ if(isset($_POST['submit'])){
     $phonenumber = $_POST['phonenumber'];
     $Password = md5($_POST['Password']);
 
+    $stmt = $conn -> prepare("select * from users where NIC = ?");
+	$stmt -> bind_param("s", $NIC);
+	$stmt -> execute();
+	$stmt_result = $stmt -> get_result();
 
-    $select = "SELECT * FROM `users` WHERE `NIC` = '$NIC' && `Password` = '$Password'";
-    $result1 = mysqli_query($conn, $select);
-    
-    if(mysqli_num_rows($result1)> 0){
-        $error[] = 'user already exist!';
+    if($stmt_result -> num_rows > 0){
+        $data = $stmt_result -> fetch_assoc();
+        echo "<p>user exist.</p>";
+        
     }else{
         $sql = "INSERT INTO `users`(`NIC`, `FirstName`, `LastName`, `phonenumber`,`Password`) 
-    VALUES ('$NIC','$FirstName','$LastName','$phonenumber','$Password')";
-     $result = mysqli_query($conn, $sql);
-     header("Location: index.php");
+        VALUES ('$NIC','$FirstName','$LastName','$phonenumber','$Password')";
+        $result = mysqli_query($conn, $sql);
+        header("Location: index.php");        
     
-    }
-
-}
-
+}}
 ?>
 
 
@@ -57,16 +57,6 @@ if(isset($_POST['submit'])){
             <div class="container d-flex justify-content-center">
                 <form action="" method="post" style="width:50vw; min-width:300px;">
 
-                <?php
-                    if(isset($error)){
-                        foreach($error as $error){
-                        echo '<span class="error-msg" >'.$error.'</span>';
-                    };
-                };
-                ?>
-                
-            
-                    
                         <div class="col mb-3" >
                             <label class="form-label">NIC: </label>
                             <input type="text" class="form-control" name="NIC" placeholder="provide nic number" required/>

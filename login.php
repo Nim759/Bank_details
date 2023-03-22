@@ -19,15 +19,9 @@ if(isset($_POST['submit'])){
 			}else{
                 
                 echo "<p>Invalied Email or Password.</p>";
-                
-
             }
 		}else{
-          
             echo "<p>Invalied Email or Password.</p>";
-        
-
-		
 	}}
 ?>
 
@@ -64,14 +58,6 @@ if(isset($_POST['submit'])){
             <div class="container d-flex justify-content-center">
                 <form action="" method="post" style="width:50vw; min-width:300px;">
                 
-                <?php
-                //     if(isset($error)){
-                //         foreach($error as $error){
-                //         echo '<span class="error-msg" >'.$error.'</span>';
-                //     };
-                // };
-                ?> 
-
                         <div class="col mb-3" >
                             <label class="form-label">NIC: </label>
                             <input type="text" class="form-control" name="NIC" placeholder="provide nic number" required/>
