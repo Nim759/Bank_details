@@ -1,27 +1,37 @@
+
 <?php
 include "db_conn.php";
 
 if(isset($_POST['submit'])){
     $NIC = $_POST['NIC'];
-    $FirstName = $_POST['FirstName'];
-    $LastName = $_POST['LastName'];
-    $phonenumber = $_POST['phonenumber'];
     $Password = md5($_POST['Password']);
 
 
-    $select = "SELECT * FROM `users` WHERE `NIC` = '$NIC' && `Password` = '$Password'";
-    $result1 = mysqli_query($conn, $select);
-    
-    if($result1){
-        header('Location:index.php');
-    
-    }else{
-        $error[] = 'Incorrect NIC or Password';
-    }
+		$stmt = $conn -> prepare("select * from users where NIC = ?");
+		$stmt -> bind_param("s", $NIC);
+		$stmt -> execute();
+		$stmt_result = $stmt -> get_result();
+		if($stmt_result -> num_rows > 0){
+			$data = $stmt_result -> fetch_assoc();
+			if($data['Password'] === $Password){
+                header("Location: index.php");
 
-};
+			}else{
+                
+                echo "<p>Invalied Email or Password.</p>";
+                
 
+            }
+		}else{
+          
+            echo "<p>Invalied Email or Password.</p>";
+        
+
+		
+	}}
 ?>
+
+ 
 
 
 <!DOCTYPE html>
@@ -55,13 +65,13 @@ if(isset($_POST['submit'])){
                 <form action="" method="post" style="width:50vw; min-width:300px;">
                 
                 <?php
-                    if(isset($error)){
-                        foreach($error as $error){
-                        echo '<span class="error-msg" >'.$error.'</span>';
-                    };
-                };
-                ?>
-                
+                //     if(isset($error)){
+                //         foreach($error as $error){
+                //         echo '<span class="error-msg" >'.$error.'</span>';
+                //     };
+                // };
+                ?> 
+
                         <div class="col mb-3" >
                             <label class="form-label">NIC: </label>
                             <input type="text" class="form-control" name="NIC" placeholder="provide nic number" required/>
