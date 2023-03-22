@@ -3,20 +3,24 @@ include "db_conn.php";
 
 if(isset($_POST['submit'])){
     $NIC = $_POST['NIC'];
-    $Password = $_POST['Password'];
+    $FirstName = $_POST['FirstName'];
+    $LastName = $_POST['LastName'];
+    $phonenumber = $_POST['phonenumber'];
+    $Password = md5($_POST['Password']);
 
-    $sql = "INSERT INTO `users`(`NIC`, `FirstName`, `LastName`, `phonenumber`) 
-    VALUES ('$NIC','$FirstName','$LastName','$phonenumber')";
+
+    $select = "SELECT * FROM `users` WHERE `NIC` = '$NIC' && `Password` = '$Password'";
+    $result1 = mysqli_query($conn, $select);
     
-    $result = mysqli_query($conn, $sql);
+    if($result1){
+        header('Location:index.php');
+    
+    }else{
+        $error[] = 'Incorrect NIC or Password';
+    }
 
-    if($result){
-        header("Location: index.php");
-    }
-    else{
-        echo "Failed: " . mysqli_error($conn);
-    }
-}
+};
+
 ?>
 
 
@@ -49,7 +53,15 @@ if(isset($_POST['submit'])){
 
             <div class="container d-flex justify-content-center">
                 <form action="" method="post" style="width:50vw; min-width:300px;">
-                    
+                
+                <?php
+                    if(isset($error)){
+                        foreach($error as $error){
+                        echo '<span class="error-msg" >'.$error.'</span>';
+                    };
+                };
+                ?>
+                
                         <div class="col mb-3" >
                             <label class="form-label">NIC: </label>
                             <input type="text" class="form-control" name="NIC" placeholder="provide nic number" required/>
