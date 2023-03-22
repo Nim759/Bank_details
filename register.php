@@ -6,9 +6,10 @@ if(isset($_POST['submit'])){
     $FirstName = $_POST['FirstName'];
     $LastName = $_POST['LastName'];
     $phonenumber = $_POST['phonenumber'];
+    $Password = $_POST['Password'];
 
-    $sql = "INSERT INTO `users`(`NIC`, `FirstName`, `LastName`, `phonenumber`) 
-    VALUES ('$NIC','$FirstName','$LastName','$phonenumber')";
+    $sql = "INSERT INTO `users`(`NIC`, `FirstName`, `LastName`, `phonenumber`,`Password`) 
+    VALUES ('$NIC','$FirstName','$LastName','$phonenumber','$Password')";
     
     $result = mysqli_query($conn, $sql);
 
@@ -70,6 +71,11 @@ if(isset($_POST['submit'])){
                         <div class="col mb-3">
                             <label class="form-label">Phone  Number: </label>
                             <input type="text" class="form-control" name="phonenumber" placeholder="provie phone number" required/>
+                        </div>
+
+                        <div class="col mb-3">
+                            <label class="form-label">Password: </label>
+                            <input type="password" class="form-control" name="Password" placeholder="provide password" required/>
                         </div>
 
                         <div>

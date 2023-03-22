@@ -85,6 +85,7 @@
                    
                 </tbody>
                 </table>
+                <a href = "login.php" class="btn btn-dark mb-3">Back</a> 
         </div>
 
     <!--BOotstrap-->
