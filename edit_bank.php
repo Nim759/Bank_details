@@ -8,7 +8,7 @@ if(isset($_POST['submit'])){
     $BranchCode = $_POST['BranchCode'];
     $AccountNumber = $_POST['AccountNumber'];
 
-    $sql = "UPDATE `bank_details` SET `BankName`='$BankName',`Branch`='$Branch',`BranchCode`='$BranchCode',`AccountNumber`='$AccountNumber' WHERE `AccountNumber` ='" . mysqli_escape_string($conn,$AccountNumber) . "'";
+    $sql = "UPDATE `bank_details` SET `BankName`='$BankName',`Branch`='$Branch',`BranchCode`='$BranchCode',`AccountNumber`='$AccountNumber' WHERE `AccountNumber` ='$AccountNumber'";
     
     $result = mysqli_query($conn, $sql);
     // echo ($result)
